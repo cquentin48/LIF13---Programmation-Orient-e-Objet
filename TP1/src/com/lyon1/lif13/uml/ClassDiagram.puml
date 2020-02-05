@@ -1,0 +1,45 @@
+@startuml
+
+motor --* motorbike
+
+wheel --* motorbike
+
+headlight --* motorbike
+
+class motor{
+- speed : entier
+- MotorStatus : bool
++ switchOn()
++ switchOff()
++ updateSpeed()
++ equals()
++ hashCode()
++ toString()
+}
+
+class wheel{
+- rotation : float
++ turn(rotation : float)
++ equals()
++ hashCode()
++ toString()
+}
+
+class headlight{
+- statutheadlight : bool
++ switchOn()
++ switchOff()
++ equals()
++ hashCode()
++ toString()
+}
+
+class motorbike{
+- allume : bool
++ switchOn()
++ switchOff()
++ klaxonner()
++ turn(float)
+}
+
+ @enduml
