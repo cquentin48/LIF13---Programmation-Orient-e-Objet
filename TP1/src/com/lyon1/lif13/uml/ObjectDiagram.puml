@@ -1,0 +1,26 @@
+@startuml
+
+motor --* motorbike
+
+roue --* motorbike
+
+headLight --* motorbike
+
+object motor{
+- speed = 40
+- statusMotor = true
+}
+
+object roue{
+- rotation = 20
+}
+
+object headLight{
+- statusHeadLight : false
+}
+
+object motorbike{
+-allume = true
+}
+
+@enduml
