@@ -42,6 +42,22 @@ public class CreneauHoraire implements Cloneable {
                 '}';
     }
 
+    public int getDayNumber() {
+        return dayNumber;
+    }
+
+    public int getStartHour() {
+        return startHour;
+    }
+
+    public int getStartMinute() {
+        return startMinute;
+    }
+
+    public int getMinutesDuration() {
+        return minutesDuration;
+    }
+
     public static CreneauHoraire input(){
         Scanner sc = new Scanner(System.in);
         CreneauHoraire newCreneauHoraire = new CreneauHoraire(0,0,0,0);
