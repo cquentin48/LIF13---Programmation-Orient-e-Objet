@@ -1,3 +1,4 @@
-langauge: java
+language: java
+os: linux
 before_install:
   - cd TP3

@@ -2,4 +2,5 @@ language: java
 jdk: oraclejdk11
 
 install: true
-
+deploy:
+  script: ant -f build.xml
