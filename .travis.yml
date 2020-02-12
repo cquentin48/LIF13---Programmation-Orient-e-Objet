@@ -1,0 +1,3 @@
+langauge: java
+before_install:
+  - cd TP3
