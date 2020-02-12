@@ -1,6 +1,12 @@
 language: java
 jdk: oraclejdk11
 
-install: true
+install: antdeps
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install ant-optionnal
+
 deploy:
   script: ant -f build.xml
+
