@@ -297,6 +297,6 @@
   <target name="all" depends="build.modules" description="build all"/>
 
   <target name="test">
-    <echo message="Résulats des tests"/>
+    <ant test/>
   </target>
 </project>
