@@ -297,6 +297,16 @@
   <target name="all" depends="build.modules" description="build all"/>
 
   <target name="test">
-    <ant test/>
+    <junit printsummary="yes" haltonfailure="yes" haltonerror="yes">
+      <classpath>
+        <pathelement location="${project.jdk.classpath}"/>
+        <pathelement location="test"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+      <test name="test" haltonfailure="no" outfile="result">
+        <formatter type="plain"/>
+        <formatter type="xml"/>
+      </test>
+    </junit>
   </target>
 </project>
