@@ -11,4 +11,17 @@ public class Coup {
         x = _x;
         y = _y;
     }
+
+    public Coup(){
+        x = 0;
+        y = 0;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Plateau {
     private int longueur;
     private int largeur;
-    private int[][] etatPlateau;
+    private char[][] etatPlateau;
 
     public Plateau(int _longueur, int _largeur) throws Exception {
         if(_largeur<=0 || _longueur<= 0){
@@ -13,12 +13,27 @@ public class Plateau {
         }
         longueur = _longueur;
         largeur = _largeur;
-        etatPlateau = new int [longueur][largeur];
-        for(int[] line : etatPlateau){
-            for(int singleCase : line){
-                singleCase = 0;
+        etatPlateau = new char[longueur][largeur];
+        for(char[] line : etatPlateau){
+            for(char singleCase : line){
+                singleCase = ' ';
             }
         }
+    }
+
+    public void appliquerCoup(Coup coup, char symbol){
+        etatPlateau[coup.getX()][coup.getY()] = symbol;
+    }
+
+    public void displayPlateau(){
+        for(char[] line : etatPlateau){
+            for(char cell:line){
+                System.out.print(" "+cell+" ");
+            }
+            System.out.println("");
+        }
+        System.out.println();
+        System.out.println();
     }
 
     public int getLongueur() {
@@ -29,7 +44,7 @@ public class Plateau {
         return largeur;
     }
 
-    public boolean caseOccupe(int i, int j){return etatPlateau[i][j]==0;}
+    public boolean caseOccupe(int i, int j){return etatPlateau[i][j] == ' ';}
 
     @Override
     public String toString() {
@@ -38,5 +53,24 @@ public class Plateau {
                 ", largeur=" + largeur +
                 ", etatPlateau=" + Arrays.toString(etatPlateau) +
                 '}';
+    }
+
+    public int playingMoveHuman(int x, int y, char playerSymbol) {
+        if(!caseOccupe(x,y)){
+            try {
+                appliquerCoup(new Coup(x,y),playerSymbol);
+                return 0;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return 1;
+            }
+        }else{
+            System.out.println("Cette case est déjà occupée!");
+            return 1;
+        }
+    }
+
+    public char[][] getBoard() {
+        return etatPlateau;
     }
 }

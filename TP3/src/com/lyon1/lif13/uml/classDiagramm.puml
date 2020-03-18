@@ -1,26 +1,52 @@
 @startuml
+'Les classes définies ici
+    'Modèle
+class Model
+abstract class Joueur
+class JoueurMorpion
+class JoueurPuissance4
+abstract class Plateau
+class PlateauMorpion
+class PlateauPuissance4
+abstract class Coup
+class CoupMorpion
+class CoupPuissance4
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+    'Vue
+class View
+abstract class DisplayBoard
+class DisplayBoardTicTacToe
+class DisplayBoardPower4
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+    'Contrôleur
+class Controller
+class AttemptController
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+'Les deux interfaces
+interface JoueurHumain
+interface JoueurIA
 
-class ArrayList {
-Object[] elementData
-size()
-}
+'Les relations d'héritage
+Joueur <|-- JoueurMorpion
+Joueur <|-- JoueurPuissance4
+Plateau <|-- PlateauMorpion
+Plateau <|-- PlateauPuissance4
+Coup <|-- CoupMorpion
+Coup <|-- CoupPuissance4
+JoueurHumain <|-- JoueurMorpion
+JoueurIA <|-- JoueurMorpion
+JoueurHumain <|-- JoueurPuissance4
+JoueurIA <|-- JoueurPuissance4
+Controller <|-- AttemptController
+DisplayBoard <|-- DisplayBoardTicTacToe
+DisplayBoard <|-- DisplayBoardPower4
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
+'Les relations entre le modèle et les différents élements
+Model "1" o-- "1..2" Joueur
+Model "1" *-- "1" Plateau
+Model "1" o-- "0..n" Coup
+View "1" o-- "1" DisplayBoard
+View "1" *-- "1" Controller
+Controller "1" *-- "1..n" Model
 
 @enduml
